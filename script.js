@@ -8,7 +8,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
   formData.append("username", username);
   formData.append("password", password);
 
-  fetch("http://127.0.0.1:5000/submit", {
+  fetch("https://flask-backend-ld3u.onrender.com/submit", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"

