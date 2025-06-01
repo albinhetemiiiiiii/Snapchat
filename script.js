@@ -10,10 +10,9 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 
   fetch("https://flask-backend-ld3u.onrender.com/submit", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+    headers: {"Content-Type": "application/json"
     },
-    body: formData.toString()
+    body: JSON.stringify({ username, password })
   })
   .then(res => res.text())
   .then(data => alert(data))
